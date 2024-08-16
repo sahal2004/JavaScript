@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../Practice/style.css"></link>
+</head>
+<body>
+  <main>
+    <div class="row" id="card">
+
+    </div>
+  </main>
+  <script>
+    let Loadprodects = () => {
+      
+      fetch('https://dummyjson.com/carts/1').then(res => res.json()).then((res) => {
+        
+        let HTMLCard = ""
+        res.products.forEach(element => {
+          console.log(element);
+                
+          HTMLCard += `<div class="small-container single-product">
+            <div class="row">
+              <div class="col-2">
+                <img src="${element.thumbmail}" alt="" width="100%" id="ProductImg" />
+              </div>
+              <div class="col-2">
+                <h1>${element.title}</h1>
+                <a href="" class="btn">Add To Cart</a>
+          
+                <h3>Product Details <i class="fas fa-indent"></i></h3>
+                <br />
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias,
+                  accusamus soluta quasi illum, deserunt ut iste rem obcaecati
+                  inventore, est harum repellendus fuga velit odio sint officia
+                  corrupti eum perspiciatis.
+                </p>
+              </div>
+            </div>
+          </div>`
+              
+            });
+            document.getElementById("card").innerHTML = HTMLCard;
+         })
+      }
+      Loadprodects();
+  </script>
+</body>
+</html>
